@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <canvas id="canvas192" width="192" height="192" style="border:1px solid #000; margin: 10px;"></canvas>
+    <canvas id="canvas512" width="512" height="512" style="border:1px solid #000; margin: 10px;"></canvas>
+    <canvas id="canvas180" width="180" height="180" style="border:1px solid #000; margin: 10px;"></canvas>
+
+    <script>
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            const scale = size / 512;
+
+            // Background
+            ctx.fillStyle = '#059669';
+            ctx.fillRect(0, 0, size, size);
+
+            // Soccer field
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = 4 * scale;
+
+            // Field boundary
+            ctx.strokeRect(64 * scale, 128 * scale, 384 * scale, 256 * scale);
+
+            // Center circle
+            ctx.beginPath();
+            ctx.arc(256 * scale, 256 * scale, 48 * scale, 0, 2 * Math.PI);
+            ctx.stroke();
+
+            // Center line
+            ctx.beginPath();
+            ctx.moveTo(256 * scale, 128 * scale);
+            ctx.lineTo(256 * scale, 384 * scale);
+            ctx.stroke();
+
+            // Goal areas
+            ctx.strokeRect(64 * scale, 192 * scale, 64 * scale, 128 * scale);
+            ctx.strokeRect(384 * scale, 192 * scale, 64 * scale, 128 * scale);
+
+            // Goal boxes
+            ctx.strokeRect(64 * scale, 224 * scale, 32 * scale, 64 * scale);
+            ctx.strokeRect(416 * scale, 224 * scale, 32 * scale, 64 * scale);
+        }
+
+        // Generate icons
+        drawIcon(document.getElementById('canvas192'), 192);
+        drawIcon(document.getElementById('canvas512'), 512);
+        drawIcon(document.getElementById('canvas180'), 180);
+
+        // Download functions
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+
+        // Add download buttons
+        document.body.innerHTML += '<br><button onclick="downloadCanvas(document.getElementById(\'canvas192\'), \'icon-192x192.png\')">Download 192x192</button>';
+        document.body.innerHTML += '<button onclick="downloadCanvas(document.getElementById(\'canvas512\'), \'icon-512x512.png\')">Download 512x512</button>';
+        document.body.innerHTML += '<button onclick="downloadCanvas(document.getElementById(\'canvas180\'), \'apple-touch-icon.png\')">Download 180x180</button>';
+    </script>
+</body>
+</html>
