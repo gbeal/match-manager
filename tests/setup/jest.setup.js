@@ -71,3 +71,10 @@ global.BeforeInstallPromptEvent = class BeforeInstallPromptEvent extends Event {
 // Setup for PWA event testing
 global.window.addEventListener = jest.fn()
 global.window.removeEventListener = jest.fn()
+
+// Polyfill structuredClone for testing
+if (!global.structuredClone) {
+  global.structuredClone = (obj) => {
+    return JSON.parse(JSON.stringify(obj));
+  };
+}

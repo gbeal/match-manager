@@ -19,8 +19,14 @@ const config = {
   testMatch: [
     '<rootDir>/tests/components/**/*.test.{js,jsx,ts,tsx}',
     '<rootDir>/tests/hooks/**/*.test.{js,jsx,ts,tsx}',
+    '<rootDir>/tests/shared/**/*.test.{js,jsx,ts,tsx}',
+    '<rootDir>/tests/services/**/*.test.{js,jsx,ts,tsx}',
+    '<rootDir>/tests/stores/**/*.test.{js,jsx,ts,tsx}',
     '<rootDir>/tests/components/**/*.spec.{js,jsx,ts,tsx}',
-    '<rootDir>/tests/hooks/**/*.spec.{js,jsx,ts,tsx}'
+    '<rootDir>/tests/hooks/**/*.spec.{js,jsx,ts,tsx}',
+    '<rootDir>/tests/shared/**/*.spec.{js,jsx,ts,tsx}',
+    '<rootDir>/tests/services/**/*.spec.{js,jsx,ts,tsx}',
+    '<rootDir>/tests/stores/**/*.spec.{js,jsx,ts,tsx}'
   ],
 
   // Module name mapping for absolute imports
